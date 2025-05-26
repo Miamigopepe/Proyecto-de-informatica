@@ -1,0 +1,4 @@
+To make sure that you have all the libraries use this cmd to download all the requiring libraries
+
+pip install -r requirements.txt
+
