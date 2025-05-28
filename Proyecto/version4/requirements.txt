@@ -1,6 +1,0 @@
-# Requirements for Airspace Navigator
-matplotlib==3.7.1          # For plotting the airspace visualization
-Pillow==9.5.0              # For image handling (fake screen feature)
-pygame==2.5.0              # For music playback functionality
-tk==0.1.0                  # Built-in Python Tkinter (usually comes with Python)
-
