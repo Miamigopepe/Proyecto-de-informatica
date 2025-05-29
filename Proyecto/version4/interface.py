@@ -89,6 +89,10 @@ class AirspaceGUI:
         ttk.Button(control_frame, text="↩ Anterior", command=self.prev_track).pack(pady=2)
         ttk.Button(control_frame, text="Mostrar Nodos Alcanzables", command=self.show_reachable_nodes).pack(pady=5)
 
+        # Botón para mostrar imagen
+        show_img_button = tk.Button(master, text="Mostrar Imagen", command=self.mostrar_imagen)
+        show_img_button.pack(pady=10)
+
         # Área de gráficos
         self.fig, self.ax = plt.subplots(figsize=(10, 8))
         self.canvas = FigureCanvasTkAgg(self.fig, master=master)
@@ -97,6 +101,20 @@ class AirspaceGUI:
 
         # Inicializar listas
         self.update_combos()
+
+    def mostrar_imagen(self):
+        image_path = os.path.join(os.path.dirname(__file__), "imagen grupazo.jpg")
+        if os.path.exists(image_path):
+            top = tk.Toplevel(self.master)
+            top.title("Imagen")
+            img = Image.open(image_path)
+            img = img.resize((600, 400), Image.Resampling.LANCZOS)  # Cambiado aquí
+            photo = ImageTk.PhotoImage(img)
+            label = tk.Label(top, image=photo)
+            label.image = photo  # Necesario para evitar que se recolecte la imagen
+            label.pack()
+        else:
+            messagebox.showerror("Error", f"No se encontró la imagen: {image_path}")
 
     def add_music(self):
         """Añade archivos de música a la playlist"""
